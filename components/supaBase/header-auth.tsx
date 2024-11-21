@@ -5,7 +5,7 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/server";
-
+import { ThemeSwitcher } from "@/components/theme-switcher";
 export default async function AuthButton() {
   const supabase = await createClient();
 
@@ -16,7 +16,7 @@ export default async function AuthButton() {
   if (!hasEnvVars) {
     return (
       <>
-        <div className="flex gap-4 items-center">
+        <div className="w-full flex gap-4 items-center justify-end bg-red-500">
           <div className="flex gap-2">
             <Button
               asChild
@@ -52,13 +52,14 @@ export default async function AuthButton() {
       </form>
     </div>
   ) : (
-    <div className="flex gap-2">
+    <div className="w-full flex gap-2 justify-end items-center">
       <Button asChild size="sm" variant={"outline"}>
         <Link href="/sign-in">Sign in</Link>
       </Button>
       <Button asChild size="sm" variant={"default"}>
         <Link href="/sign-up">Sign up</Link>
       </Button>
+      <ThemeSwitcher />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import HeaderAuth from "@/components/supaBase/header-auth";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
@@ -26,13 +25,13 @@ export default function RootLayout({
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-20 items-center">
-              <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+              <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 ">
                 <HeaderAuth />
               </nav>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
