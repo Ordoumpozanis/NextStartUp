@@ -8,10 +8,11 @@ import { redirect } from "next/navigation";
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
+  const full_name = formData.get("full_name")?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
 
-  if (!email || !password) {
+  if (!email || !password || !full_name) {
     return encodedRedirect(
       "error",
       "/sign-up",
@@ -23,6 +24,9 @@ export const signUpAction = async (formData: FormData) => {
     email,
     password,
     options: {
+      data: {
+        full_name: full_name,
+      },
       emailRedirectTo: `${origin}/auth/callback`,
     },
   });

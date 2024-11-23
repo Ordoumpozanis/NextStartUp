@@ -38,6 +38,14 @@ export default async function Signup(props: {
             minLength={6}
             required
           />
+          <Label htmlFor="full_name">Your Full Name</Label>
+          <Input
+            type="text"
+            name="full_name"
+            placeholder="Your Full Name"
+            minLength={6}
+            required
+          />
           <SubmitButton formAction={signUpAction} pendingText="Signing up...">
             Sign up
           </SubmitButton>
